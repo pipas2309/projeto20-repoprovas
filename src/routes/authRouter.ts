@@ -1,0 +1,12 @@
+import { Router } from "express";
+
+//import { signIn, signUp } from "../controllers/auth.controller";
+
+import schemaValidator from "../middlewares/schemaValidatorMiddleware";
+
+const router = Router();
+
+//router.post("/signin", schemaValidator('signin'), signIn);
+//router.post("/signup", schemaValidator('signup'), signUp);
+
+export default router;
