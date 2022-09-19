@@ -3,7 +3,7 @@ import { testRepository } from '../repositories';
 import { CustomError } from '../models/customErrorModel';
 
 
-export async function register(name: string, pdfUrl: string, categoryId: number, teacherId: number, disciplineId: number) {
+export async function register (name: string, pdfUrl: string, categoryId: number, teacherId: number, disciplineId: number) {
 
     const allChecked = await testRepository.checkIds(categoryId, teacherId, disciplineId);
     
@@ -15,6 +15,12 @@ export async function register(name: string, pdfUrl: string, categoryId: number,
             );
     }
 
-    console.log(allChecked)
     await testRepository.insert(name, pdfUrl, categoryId, teacherId, disciplineId);
+}
+
+export async function listTestsByDiscipline () {
+    const allTests = await testRepository.findAll();
+
+    return allTests
+
 }

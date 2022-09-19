@@ -10,5 +10,11 @@ export async function newTest(req: Request, res: Response) {
 
     await testService.register(name, pdfUrl, categoryId, teacherId, disciplineId);
 
-    res.status(202).send(`Teste ${name} criado com sucesso!`);
+    res.status(201).send(`Teste ${name} criado com sucesso!`);
+}
+
+export async function getByDiscipline (req: Request, res: Response) {
+    const response = await testService.listTestsByDiscipline();
+
+    res.status(200).send(response);
 }

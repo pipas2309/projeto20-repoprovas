@@ -1,7 +1,7 @@
 import { prisma } from "../config/database";
 
 
-export async function checkIds(categoryId: number, teacherId: number, disciplineId: number) {
+export async function checkIds (categoryId: number, teacherId: number, disciplineId: number) {
     const allchecked: {missing: string[], check: boolean} = {
         missing: [],
         check: true
@@ -44,7 +44,7 @@ export async function checkIds(categoryId: number, teacherId: number, discipline
     return allchecked;
 }
 
-export async function insert(name: string, pdfUrl: string, categoryId: number, teacherId: number, disciplineId: number) {
+export async function insert (name: string, pdfUrl: string, categoryId: number, teacherId: number, disciplineId: number) {
     const teacherDiscipline = await prisma.teacherDiscipline.upsert({
         where: {
             teacherId_disciplineId: {
@@ -60,4 +60,24 @@ export async function insert(name: string, pdfUrl: string, categoryId: number, t
     await prisma.test.create({data: {
         name, pdfUrl, categoryId, teacherDisciplineId: teacherDiscipline.id
     }})
+}
+
+export async function findAll () {
+    return await prisma.teacherDiscipline.findMany({
+        select: {
+            teacherId: true,
+            disciplineId: true,
+            tests: {
+                select: {
+                    name: true,
+                    pdfUrl: true,
+                    categoryId: true,
+
+                }
+            }
+        },
+        orderBy: {
+            createdAt: 'asc'
+        }
+    })
 }
