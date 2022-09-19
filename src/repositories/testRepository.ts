@@ -26,18 +26,18 @@ export async function checkIds(categoryId: number, teacherId: number, discipline
     });
 
     if(!category) {
-        allchecked.missing.push('category');
+        allchecked.missing.push('Categoria');
     }
 
     if(!teacher) {
-        allchecked.missing.push('teacher');
+        allchecked.missing.push('Professor');
     }
 
     if(!discipline) {
-        allchecked.missing.push('discipline');
+        allchecked.missing.push('Disciplina');
     }
 
-    if(!allchecked.missing[0]) {
+    if(allchecked.missing[0]) {
         allchecked.check = false;
     }
 
@@ -45,8 +45,16 @@ export async function checkIds(categoryId: number, teacherId: number, discipline
 }
 
 export async function insert(name: string, pdfUrl: string, categoryId: number, teacherId: number, disciplineId: number) {
-    const teacherDiscipline = await prisma.teacherDiscipline.create({data: {
-        teacherId, disciplineId
+    const teacherDiscipline = await prisma.teacherDiscipline.upsert({
+        where: {
+            teacherId_disciplineId: {
+                teacherId, 
+                disciplineId
+            }
+        },
+        update: {},
+        create: {
+            teacherId, disciplineId
         }});
 
     await prisma.test.create({data: {
