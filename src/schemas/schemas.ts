@@ -1,5 +1,8 @@
-//import { x } from "./x.schema";
+import { signin, signup } from "./authSchema";
 
-const schemas = {};
+const schemas = {
+    signin,
+    signup
+};
 
 export default schemas;
