@@ -16,8 +16,6 @@ describe('Testando POST /signup - CADASTRO ', () => {
     it("Cadastrando um usuário com sucesso deve retornar 201", async () => {
         const body = await userFactory.__createUser();
 
-        console.log(body)
-
         const result = await supertest(app).post('/signup').send(body);
 
         expect(result.status).toBe(201);
