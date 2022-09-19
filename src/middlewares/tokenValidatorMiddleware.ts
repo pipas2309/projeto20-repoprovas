@@ -19,7 +19,7 @@ async function tokenValidator(req: Request, res: Response, next: NextFunction) {
 
     if (!token) tokenError();
 
-    jwt.verify(token, process.env.ACCESS_TOKEN_SECRET!, (error, id) => {
+    jwt.verify(token, process.env.TOKEN_SECRET!, (error, id) => {
         if(error) tokenError();
 
         res.locals.userId = id;

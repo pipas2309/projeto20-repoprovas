@@ -1,8 +1,10 @@
-import { signin, signup } from "./authSchema";
+import { signin, signup } from './authSchema';
+import { newTest } from './testSchema';
 
 const schemas = {
     signin,
-    signup
+    signup,
+    newTest
 };
 
 export default schemas;
