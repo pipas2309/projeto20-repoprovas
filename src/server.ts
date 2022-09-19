@@ -8,7 +8,7 @@ import 'express-async-errors';
 import router from './routes/index';
 
 //Error Handler
-import { errorHandler } from './middlewares/errorHandler.middleware';
+import { errorHandler } from './middlewares/errorHandlerMiddleware';
 
 //Configs
 const server = express();

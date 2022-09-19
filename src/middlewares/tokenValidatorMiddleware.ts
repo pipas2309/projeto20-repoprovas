@@ -2,7 +2,7 @@ import jwt from 'jsonwebtoken';
 import 'dotenv/config';
 import { NextFunction, Request, Response } from 'express';
 
-import { CustomError } from '../models/customError.model';
+import { CustomError } from '../models/customErrorModel';
 
 async function tokenValidator(req: Request, res: Response, next: NextFunction) {
     const { authorization } = req.headers;
