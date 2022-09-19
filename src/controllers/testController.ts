@@ -6,7 +6,7 @@ import { Request, Response } from 'express';
 
 
 export async function newTest(req: Request, res: Response) {
-    // const { name, pdfUrl, category, teacherId, disciplineId }: ITestSimple = req.body;
+    //const { name, pdfUrl, categoryId, teacherId, disciplineId }: ITestSimple = req.body;
 
     // const response: string = await testService.register(name, pdfUrl, category, teacherId, disciplineId);
 
