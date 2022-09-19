@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 
-import schemas from "../schemas/schemas";
+import schemas from "../schemas";
 import { CustomError } from "../models/customErrorModel";
 
 type SchemasTypes = keyof typeof schemas;
