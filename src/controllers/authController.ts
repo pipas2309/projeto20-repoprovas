@@ -1,18 +1,22 @@
 import { Request, Response } from 'express';
-//import * as userService from '../services/user.service';
+
+import { IUserSimple } from '../interfaces/userInterface';
+
+import { userService } from '../services';
+
 
 export async function signIn(req: Request, res: Response) {
-    const { email, password } = req.body;
+    const { email, password }: IUserSimple = req.body;
 
-    //const response = await userService.login(email.toLocaleLowerCase(), password);
+    const response: string = await userService.login(email.toLocaleLowerCase(), password);
 
-    //res.status(202).send(response);
+    res.status(202).send(response);
 }
 
 export async function signUp(req: Request, res: Response) {
-    const { name, email, password } = req.body;
+    const { email, password }: IUserSimple = req.body;
 
-    //await userService.createNewUser(name, email.toLocaleLowerCase(), password);
+    await userService.createNewUser(email.toLocaleLowerCase(), password);
 
     res.sendStatus(201);
 }
